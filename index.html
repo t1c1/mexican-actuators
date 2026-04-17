@@ -9,8 +9,6 @@
   <link rel="canonical" href="https://mexicanactuators.com">
   <meta name="theme-color" content="#691c32">
 
-  <!-- Favicon: Mexican coat of arms eagle silhouette -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦅</text></svg>" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="any">
 
   <!-- Open Graph -->
@@ -128,10 +126,10 @@
       text-decoration: none;
     }
 
-    .nav-eagle {
-      height: 28px;
-      width: auto;
-      opacity: 0.9;
+    .nav-favicon {
+      height: 20px;
+      width: 20px;
+      border-radius: 2px;
     }
 
     .nav-name {
@@ -170,6 +168,9 @@
       text-align: center;
       padding: 120px 24px 80px;
       position: relative;
+      background:
+        url('https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1920&q=80&auto=format')
+        center center / cover no-repeat;
     }
 
     .hero::before {
@@ -177,9 +178,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 20% 30%, rgba(155,34,71,0.15) 0%, transparent 45%),
-        radial-gradient(ellipse at 80% 70%, rgba(166,128,45,0.08) 0%, transparent 45%),
-        radial-gradient(ellipse at 50% 100%, rgba(105,28,50,0.12) 0%, transparent 40%);
+        linear-gradient(180deg, rgba(12,7,9,0.92) 0%, rgba(12,7,9,0.75) 40%, rgba(12,7,9,0.88) 100%),
+        radial-gradient(ellipse at 30% 40%, rgba(155,34,71,0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(166,128,45,0.1) 0%, transparent 50%);
       pointer-events: none;
     }
 
@@ -803,7 +804,7 @@
   <!-- NAV -->
   <nav>
     <a href="/" class="nav-brand">
-      <img src="/gobmx-eagle.svg" alt="Mexican Actuators" class="nav-eagle">
+      <img src="/favicon.ico" alt="" class="nav-favicon">
       <span class="nav-name">Mexican Actuators</span>
     </a>
     <a href="#contact" class="nav-cta">Get Sourcing Intel</a>
@@ -850,21 +851,21 @@
     </div>
   </div>
 
-  <!-- NASA PUBLIC DOMAIN IMAGES -->
+  <!-- MANUFACTURING PHOTOGRAPHY -->
   <div class="image-strip">
     <img
-      src="https://images-assets.nasa.gov/image/MAF_20240312_CS5_YRing05/MAF_20240312_CS5_YRing05~medium.jpg"
-      alt="Precision metal ring manufacturing at NASA Michoud Assembly Facility. Public domain."
+      src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80&auto=format"
+      alt="Industrial welding with sparks on metal fabrication"
       loading="lazy"
     >
     <img
-      src="https://images-assets.nasa.gov/image/LRC-2021-B701_P-01576/LRC-2021-B701_P-01576~medium.jpg"
-      alt="Advanced composite manufacturing robot at NASA Langley Research Center. Public domain."
+      src="https://images-assets.nasa.gov/image/MAF_20240312_CS5_YRing05/MAF_20240312_CS5_YRing05~medium.jpg"
+      alt="Precision metal ring manufacturing at NASA Michoud Assembly Facility"
       loading="lazy"
     >
     <img
       src="https://images-assets.nasa.gov/image/MAF_20251114_CS4_LH2_VAB-CellA_004/MAF_20251114_CS4_LH2_VAB-CellA_004~medium.jpg"
-      alt="Industrial assembly of propellant tank at NASA Michoud facility. Public domain."
+      alt="Industrial assembly of propellant tank components"
       loading="lazy"
     >
   </div>
