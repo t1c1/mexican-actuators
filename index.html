@@ -77,19 +77,20 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0c0709;
-      --surface: #130e10;
-      --border: #2a1a20;
+      --bg: #0a0608;
+      --surface: #110c0e;
+      --surface-raised: #1a1214;
+      --border: #221519;
       --border-light: #3d2630;
-      --text: #f3f0f3;
-      --text-dim: rgba(243,240,243,0.5);
-      --text-muted: rgba(243,240,243,0.25);
+      --text: #ede9ed;
+      --text-secondary: rgba(237,233,237,0.6);
+      --text-tertiary: rgba(237,233,237,0.32);
       --guinda: #9b2247;
       --guinda-dark: #691c32;
-      --aubergine: #3A0B1F;
-      --gold: #A6802D;
+      --guinda-glow: rgba(155,34,71,0.12);
+      --gold: #c49a3c;
       --gold-light: #dac6a1;
-      --gold-dim: rgba(166,128,45,0.15);
+      --gold-dim: rgba(196,154,60,0.1);
     }
 
     html { scroll-behavior: smooth; }
@@ -98,7 +99,8 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.55;
+      font-size: 15px;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
@@ -110,63 +112,58 @@
       left: 0;
       right: 0;
       z-index: 100;
-      padding: 16px 24px;
+      padding: 0 32px;
+      height: 52px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(12,7,9,0.9);
-      backdrop-filter: blur(12px);
+      background: rgba(10,6,8,0.92);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
     }
 
-    .nav-favicon {
-      height: 20px;
-      width: 20px;
-      border-radius: 2px;
-    }
+    .nav-favicon { height: 18px; width: 18px; border-radius: 2px; }
 
     .nav-name {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--gold-light);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
     .nav-cta {
-      padding: 8px 20px;
+      padding: 7px 18px;
       background: var(--guinda);
       color: #fff;
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.06em;
       border: none;
-      border-radius: 4px;
+      border-radius: 3px;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.2s;
+      transition: background 0.15s;
     }
 
-    .nav-cta:hover { background: var(--guinda-dark); }
+    .nav-cta:hover { background: #b42a55; }
 
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 120px 24px 80px;
+      justify-content: flex-end;
+      padding: 0 32px 96px;
       position: relative;
       background:
         url('https://images.unsplash.com/photo-1567789884554-0b844b597180?w=1920&q=80&auto=format')
@@ -178,151 +175,127 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(12,7,9,0.93) 0%, rgba(12,7,9,0.82) 50%, rgba(12,7,9,0.93) 100%);
-      pointer-events: none;
+        linear-gradient(180deg,
+          rgba(10,6,8,0.96) 0%,
+          rgba(10,6,8,0.7) 40%,
+          rgba(10,6,8,0.85) 75%,
+          rgba(10,6,8,0.98) 100%);
     }
 
-    .hero-status {
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+      margin-bottom: 24px;
     }
 
     .hero h1 {
-      font-size: clamp(48px, 8vw, 120px);
+      font-size: clamp(56px, 9vw, 128px);
       font-weight: 900;
-      line-height: 0.92;
-      letter-spacing: -0.03em;
-      margin-bottom: 24px;
-      position: relative;
-      z-index: 1;
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      margin-bottom: 32px;
     }
 
-    .hero h1 .line-mexico {
-      display: block;
-      background: linear-gradient(90deg, var(--guinda) 0%, var(--gold) 35%, var(--gold-light) 50%, var(--gold) 65%, var(--guinda) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: none;
-    }
-
-    .hero h1 .line-actuators {
+    .hero h1 .word-mexican {
       display: block;
       color: var(--gold-light);
-      -webkit-text-fill-color: var(--gold-light);
-      opacity: 0.85;
+    }
+
+    .hero h1 .word-actuators {
+      display: block;
+      color: var(--text);
+      opacity: 0.35;
     }
 
     .hero-sub {
-      font-size: clamp(16px, 2vw, 20px);
-      color: rgba(243,240,243,0.65);
-      max-width: 580px;
-      margin: 0 auto 48px;
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 520px;
       line-height: 1.6;
+      margin-bottom: 40px;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
     .btn-primary {
-      padding: 14px 32px;
+      padding: 13px 28px;
       background: var(--guinda);
       color: #fff;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       border: none;
-      border-radius: 4px;
+      border-radius: 3px;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.2s;
+      transition: background 0.15s;
     }
 
-    .btn-primary:hover { background: var(--guinda-dark); }
+    .btn-primary:hover { background: #b42a55; }
 
-    .btn-secondary {
-      padding: 14px 32px;
+    .btn-ghost {
+      padding: 13px 28px;
       background: transparent;
-      color: var(--gold-light);
-      font-size: 14px;
+      color: var(--text-secondary);
+      font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.02em;
       border: 1px solid var(--border-light);
-      border-radius: 4px;
+      border-radius: 3px;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: color 0.15s, border-color 0.15s;
     }
 
-    .btn-secondary:hover {
-      color: var(--gold);
-      border-color: var(--gold-light);
-    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--gold-light); }
 
     /* ── STATS BAR ── */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
 
     .stat {
-      padding: 48px 24px;
+      padding: 36px 24px;
       text-align: center;
       border-right: 1px solid var(--border);
-      background: var(--surface);
     }
 
     .stat:last-child { border-right: none; }
 
     .stat-value {
       font-family: 'JetBrains Mono', monospace;
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 800;
-      color: var(--gold-light);
+      font-size: clamp(24px, 3.5vw, 40px);
+      font-weight: 700;
+      color: var(--text);
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .stat-label {
-      font-size: 12px;
-      color: var(--text-dim);
+      font-size: 11px;
+      color: var(--text-tertiary);
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
     }
 
     /* ── IMAGE STRIP ── */
     .image-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      height: 320px;
+      height: 240px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -330,176 +303,171 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: saturate(0.6) brightness(0.45) contrast(1.05);
-      transition: filter 0.6s ease;
+      filter: saturate(0.3) brightness(0.35);
+      transition: filter 0.5s ease;
     }
 
     .image-strip img:hover {
-      filter: saturate(0.8) brightness(0.6) contrast(1.05);
+      filter: saturate(0.5) brightness(0.5);
     }
 
     /* ── SECTIONS ── */
-    section {
-      padding: 80px 24px;
-    }
-
     .section-inner {
-      max-width: 1200px;
+      max-width: 1080px;
       margin: 0 auto;
+      padding: 0 32px;
     }
 
     .section-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .section-title {
-      font-size: clamp(32px, 4vw, 56px);
+      font-size: clamp(28px, 4vw, 48px);
       font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 16px;
     }
 
     .section-desc {
-      font-size: 18px;
-      color: var(--text-dim);
-      max-width: 600px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 540px;
       line-height: 1.6;
     }
 
     /* ── TYPES GRID ── */
+    #types { padding: 96px 0 0; }
+
     .types-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: var(--border);
-      margin-top: 64px;
+      margin-top: 56px;
+      border: 1px solid var(--border);
     }
 
     .type-card {
       background: var(--surface);
-      padding: 48px 32px;
-      position: relative;
+      padding: 36px 28px;
     }
 
-    .type-card::before {
-      content: attr(data-num);
-      position: absolute;
-      top: 16px;
-      right: 20px;
+    .type-num {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .type-icon {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border-light);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      color: var(--gold);
+      font-size: 10px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
     }
 
     .type-name {
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
     }
 
     .type-desc {
-      font-size: 14px;
-      color: var(--text-dim);
-      line-height: 1.7;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
     }
 
-    /* ── QUOTE ── */
+    /* ── PULL QUOTE ── */
     .quote-section {
-      padding: 80px 24px;
+      padding: 80px 0;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(ellipse at 50% 50%, rgba(155,34,71,0.06) 0%, transparent 60%);
+      position: relative;
+    }
+
+    .quote-section::before {
+      content: '';
+      position: absolute;
+      left: 32px;
+      top: 80px;
+      bottom: 80px;
+      width: 3px;
+      background: var(--guinda);
     }
 
     .quote-inner {
-      max-width: 700px;
-      text-align: center;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px 0 56px;
     }
 
     .quote-inner blockquote {
-      font-size: clamp(24px, 3vw, 36px);
+      font-size: clamp(22px, 2.8vw, 32px);
       font-weight: 700;
       line-height: 1.3;
-      letter-spacing: -0.01em;
-      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--text);
     }
 
     .quote-inner cite {
       font-style: normal;
-      font-size: 13px;
-      color: var(--text-dim);
+      font-size: 12px;
+      color: var(--text-tertiary);
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.1em;
     }
 
-    /* ── WHY SECTION ── */
+    /* ── WHY + USMCA (merged) ── */
+    .why-section { padding: 96px 0 0; }
+
     .why-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: var(--border);
-      margin-top: 64px;
+      margin-top: 56px;
+      border: 1px solid var(--border);
     }
 
     .why-card {
       background: var(--surface);
-      padding: 48px 32px;
+      padding: 36px 28px;
     }
 
     .why-number {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 48px;
-      font-weight: 800;
+      font-size: 10px;
       color: var(--guinda);
-      opacity: 0.5;
-      margin-bottom: 16px;
-      line-height: 1;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
     }
 
     .why-title {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
     }
 
     .why-text {
-      font-size: 14px;
-      color: var(--text-dim);
-      line-height: 1.7;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
     }
 
-    /* ── USMCA SECTION ── */
+    /* ── USMCA CALLOUT ── */
     .usmca-section {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      padding: 96px 0;
     }
 
-    .usmca-grid {
+    .usmca-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 380px;
       gap: 64px;
       margin-top: 48px;
       align-items: start;
@@ -514,27 +482,27 @@
 
     .usmca-points li {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       align-items: flex-start;
     }
 
-    .usmca-points .check {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--gold-dim);
-      color: var(--gold);
+    .usmca-check {
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--guinda);
+      border-radius: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       margin-top: 2px;
-      font-size: 12px;
+      color: var(--guinda);
+      font-size: 10px;
     }
 
     .usmca-points .point-text {
-      font-size: 15px;
-      color: rgba(243,240,243,0.65);
+      font-size: 14px;
+      color: var(--text-secondary);
       line-height: 1.6;
     }
 
@@ -544,27 +512,30 @@
     }
 
     .usmca-cta-box {
-      background: var(--bg);
-      border: 1px solid var(--border-light);
-      border-radius: 8px;
-      padding: 40px 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 36px 28px;
     }
 
     .usmca-cta-box h3 {
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
     }
 
     .usmca-cta-box p {
-      font-size: 14px;
-      color: var(--text-dim);
-      line-height: 1.7;
-      margin-bottom: 24px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 20px;
     }
 
     /* ── LEAD FORM ── */
-    #contact { background: var(--bg); }
+    #contact {
+      padding: 96px 0;
+      border-top: 1px solid var(--border);
+    }
 
     .form-container {
       display: grid;
@@ -574,232 +545,245 @@
     }
 
     .form-info h3 {
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .form-info p {
-      font-size: 15px;
-      color: var(--text-dim);
-      line-height: 1.7;
-      margin-bottom: 24px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 28px;
     }
 
     .form-details {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     .form-detail {
       display: flex;
       gap: 12px;
-      align-items: center;
+      align-items: baseline;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
     }
 
-    .form-detail-icon {
-      width: 36px;
-      height: 36px;
-      border: 1px solid var(--border-light);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
+    .form-detail::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 1px;
+      background: var(--guinda);
       flex-shrink: 0;
-      font-size: 14px;
-    }
-
-    .form-detail-text {
-      font-size: 14px;
-      color: rgba(243,240,243,0.6);
+      position: relative;
+      top: -1px;
     }
 
     .form-box {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 40px 32px;
+      padding: 36px 28px;
     }
 
     .form-box h3 {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
       margin-bottom: 24px;
     }
 
-    .form-group { margin-bottom: 16px; }
+    .form-group { margin-bottom: 14px; }
 
     .form-group label {
       display: block;
-      font-size: 12px;
-      color: var(--text-dim);
+      font-size: 11px;
+      color: var(--text-tertiary);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 6px;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+      font-weight: 500;
     }
 
     .form-group label .req { color: var(--guinda); }
 
     .form-input {
       width: 100%;
-      padding: 12px 16px;
+      padding: 10px 14px;
       background: var(--bg);
-      border: 1px solid var(--border-light);
-      border-radius: 4px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
       color: var(--text);
       font-family: inherit;
       font-size: 14px;
-      transition: border-color 0.2s;
+      transition: border-color 0.15s;
     }
 
     .form-input:focus {
       outline: none;
-      border-color: var(--gold);
+      border-color: var(--guinda);
     }
 
-    .form-input::placeholder { color: var(--text-muted); }
+    .form-input::placeholder { color: var(--text-tertiary); }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 14px;
     }
 
-    textarea.form-input { resize: none; min-height: 100px; }
+    textarea.form-input { resize: none; min-height: 96px; }
 
     select.form-input {
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='rgba(243,240,243,0.4)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='rgba(237,233,237,0.3)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 40px;
+      background-position: right 14px center;
+      padding-right: 36px;
     }
 
     .form-submit {
       width: 100%;
-      padding: 14px 24px;
+      padding: 13px 24px;
       background: var(--guinda);
       color: #fff;
       font-family: inherit;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       border: none;
-      border-radius: 4px;
+      border-radius: 3px;
       cursor: pointer;
-      margin-top: 8px;
-      transition: background 0.2s;
+      margin-top: 6px;
+      transition: background 0.15s;
     }
 
-    .form-submit:hover { background: var(--guinda-dark); }
-    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+    .form-submit:hover { background: #b42a55; }
+    .form-submit:disabled { opacity: 0.4; cursor: not-allowed; }
 
     .form-note {
-      font-size: 12px;
-      color: var(--text-muted);
+      font-size: 11px;
+      color: var(--text-tertiary);
       margin-top: 12px;
       text-align: center;
     }
 
-    .form-note a { color: var(--gold-light); text-decoration: underline; }
+    .form-note a { color: var(--gold); text-decoration: none; }
+    .form-note a:hover { text-decoration: underline; }
 
-    .form-success {
-      text-align: center;
-      padding: 40px 0;
-    }
-
-    .form-success h3 {
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    .form-success p {
-      color: var(--text-dim);
-      font-size: 15px;
-    }
+    .form-success { text-align: center; padding: 40px 0; }
+    .form-success h3 { font-size: 20px; margin-bottom: 6px; }
+    .form-success p { color: var(--text-secondary); font-size: 14px; }
 
     /* ── FAQ ── */
+    .faq-section { padding: 96px 0; border-top: 1px solid var(--border); }
+
     .faq-list {
       margin-top: 48px;
       display: flex;
       flex-direction: column;
-      gap: 1px;
-      background: var(--border);
     }
 
-    .faq-item { background: var(--surface); padding: 32px; }
-    .faq-q { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .faq-item {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+
+    .faq-q {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
 
     .faq-a {
-      font-size: 15px;
-      color: var(--text-dim);
-      line-height: 1.7;
-      max-width: 800px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 720px;
     }
 
     /* ── FOOTER ── */
     footer {
-      padding: 48px 24px;
+      padding: 40px 32px;
       border-top: 1px solid var(--border);
-      text-align: center;
     }
 
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
 
     .footer-brand {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--gold-light);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 8px;
     }
 
     .footer-powered {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 4px;
+      font-size: 11px;
+      color: var(--text-tertiary);
     }
 
     .footer-powered a {
-      color: var(--text-dim);
+      color: var(--text-secondary);
       text-decoration: none;
     }
 
-    .footer-powered a:hover { color: var(--text); }
-    .footer-legal { font-size: 11px; color: var(--text-muted); }
+    .footer-powered a:hover { text-decoration: underline; }
 
-    .footer-nasa {
+    .footer-right {
       font-size: 10px;
-      color: var(--text-muted);
-      margin-top: 12px;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
+      color: var(--text-tertiary);
+      text-align: right;
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
+      .types-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: 1fr; }
+      .usmca-layout { grid-template-columns: 1fr; gap: 40px; }
+      .form-container { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 0 20px 64px; }
+      .hero h1 { font-size: clamp(44px, 12vw, 72px); }
+      .section-inner { padding: 0 20px; }
       .stats-bar { grid-template-columns: repeat(2, 1fr); }
       .stat:nth-child(2) { border-right: none; }
       .types-grid { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: 1fr; }
-      .usmca-grid { grid-template-columns: 1fr; gap: 40px; }
-      .form-container { grid-template-columns: 1fr; gap: 40px; }
       .form-row { grid-template-columns: 1fr; }
       .image-strip { grid-template-columns: 1fr; height: auto; }
-      .image-strip img { height: 200px; }
-      .quote-section { padding: 60px 24px; }
+      .image-strip img { height: 160px; }
+      .quote-section::before { left: 20px; }
+      .quote-inner { padding: 0 20px 0 44px; }
+      .footer-inner { flex-direction: column; gap: 4px; }
+      .footer-right { text-align: left; }
+      nav { padding: 0 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="/" class="nav-brand">
       <img src="/favicon.ico" alt="" class="nav-favicon">
@@ -810,22 +794,21 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-status">
-      <span class="status-dot"></span>
-      North American Supplier Intelligence
-    </div>
-    <h1>
-      <span class="line-mexico">MEXICAN</span>
-      <span class="line-actuators">ACTUATORS</span>
-    </h1>
-    <p class="hero-sub">
-      Find actuator manufacturers across Mexico and North America.
-      Linear, hydraulic, pneumatic, electric. USMCA-compliant sourcing
-      powered by 1M+ indexed manufacturers.
-    </p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Request Supplier List</a>
-      <a href="#types" class="btn-secondary">Explore Actuator Types</a>
+    <div class="hero-content">
+      <div class="hero-label">North American Supplier Intelligence</div>
+      <h1>
+        <span class="word-mexican">Mexican</span>
+        <span class="word-actuators">Actuators</span>
+      </h1>
+      <p class="hero-sub">
+        Find actuator manufacturers across Mexico and North America.
+        Linear, hydraulic, pneumatic, electric. USMCA-compliant sourcing
+        powered by 1M+ indexed manufacturers.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Request Supplier List</a>
+        <a href="#types" class="btn-ghost">Explore Actuator Types</a>
+      </div>
     </div>
   </section>
 
@@ -849,80 +832,51 @@
     </div>
   </div>
 
-  <!-- PUBLIC DOMAIN ACTUATOR PHOTOGRAPHY (NASA) -->
+  <!-- NASA PUBLIC DOMAIN ACTUATOR PHOTOGRAPHY -->
   <div class="image-strip">
-    <img
-      src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001917/GSFC_20171208_Archive_e001917~medium.jpg"
-      alt="Webb Telescope mirror actuator system. NASA/Goddard, public domain."
-      loading="lazy"
-    >
-    <img
-      src="https://images-assets.nasa.gov/image/0102743/0102743~medium.jpg"
-      alt="Electro-mechanical actuators for launch vehicle thrust vector control. NASA, public domain."
-      loading="lazy"
-    >
-    <img
-      src="https://images-assets.nasa.gov/image/KSC-04pd0082/KSC-04pd0082~medium.jpg"
-      alt="Workers measuring rudder speed brake actuator alignment. NASA/KSC, public domain."
-      loading="lazy"
-    >
+    <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001917/GSFC_20171208_Archive_e001917~medium.jpg" alt="Webb Telescope mirror actuator system. NASA/Goddard, public domain." loading="lazy">
+    <img src="https://images-assets.nasa.gov/image/0102743/0102743~medium.jpg" alt="Electro-mechanical actuators for launch vehicle thrust vector control. NASA, public domain." loading="lazy">
+    <img src="https://images-assets.nasa.gov/image/KSC-04pd0082/KSC-04pd0082~medium.jpg" alt="Workers measuring rudder speed brake actuator alignment. NASA/KSC, public domain." loading="lazy">
   </div>
 
   <!-- ACTUATOR TYPES -->
   <section id="types">
     <div class="section-inner">
       <div class="section-label">Capabilities</div>
-      <h2 class="section-title">Every actuator type.<br>One search.</h2>
+      <h2 class="section-title">Every actuator type. One search.</h2>
       <p class="section-desc">
-        Discover verified North American suppliers across all major actuator categories.
-        Filterable by certification, location, capacity, and lead time.
+        Verified North American suppliers across all major actuator categories.
+        Filter by certification, location, capacity, and lead time.
       </p>
 
       <div class="types-grid">
-        <div class="type-card" data-num="01">
-          <div class="type-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><polyline points="17 7 12 2 7 7"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
-          </div>
+        <div class="type-card">
+          <div class="type-num">01</div>
           <h3 class="type-name">Linear Actuators</h3>
-          <p class="type-desc">Ball screw, belt-driven, and rod-style linear motion. Used in factory automation, packaging, CNC positioning, and automotive assembly. Mexico's largest actuator export category.</p>
+          <p class="type-desc">Ball screw, belt-driven, and rod-style linear motion. Factory automation, packaging, CNC positioning, automotive assembly. Mexico's largest actuator export category.</p>
         </div>
-
-        <div class="type-card" data-num="02">
-          <div class="type-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          </div>
+        <div class="type-card">
+          <div class="type-num">02</div>
           <h3 class="type-name">Hydraulic Actuators</h3>
-          <p class="type-desc">Cylinders and rotary hydraulic motors for heavy-duty applications. Aerospace flight controls, construction equipment, oil and gas. High force density, extreme environments.</p>
+          <p class="type-desc">Cylinders and rotary hydraulic motors for heavy-duty applications. Aerospace flight controls, construction, oil and gas. High force density, extreme environments.</p>
         </div>
-
-        <div class="type-card" data-num="03">
-          <div class="type-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
-          </div>
+        <div class="type-card">
+          <div class="type-num">03</div>
           <h3 class="type-name">Pneumatic Actuators</h3>
           <p class="type-desc">Compressed air cylinders, grippers, and rotary actuators. Food processing, packaging, semiconductor handling. Clean, fast, cost-effective for repetitive motion.</p>
         </div>
-
-        <div class="type-card" data-num="04">
-          <div class="type-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
+        <div class="type-card">
+          <div class="type-num">04</div>
           <h3 class="type-name">Electric Actuators</h3>
           <p class="type-desc">Servo, stepper, and brushless DC motor drives. Precision positioning, medical devices, robotics. Fastest-growing segment, replacing pneumatic in smart factories.</p>
         </div>
-
-        <div class="type-card" data-num="05">
-          <div class="type-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-          </div>
+        <div class="type-card">
+          <div class="type-num">05</div>
           <h3 class="type-name">Rotary Actuators</h3>
           <p class="type-desc">Quarter-turn, multi-turn, and continuous rotation. Valve automation, damper control, antenna positioning. Critical for oil/gas infrastructure across USMCA corridors.</p>
         </div>
-
-        <div class="type-card" data-num="06">
-          <div class="type-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18"/></svg>
-          </div>
+        <div class="type-card">
+          <div class="type-num">06</div>
           <h3 class="type-name">Valve Actuators</h3>
           <p class="type-desc">Spring-return, double-acting, and electro-hydraulic valve drives. Process control, water treatment, HVAC. Nearshoring demand surging as US plants modernize.</p>
         </div>
@@ -930,7 +884,7 @@
     </div>
   </section>
 
-  <!-- QUOTE BREAK -->
+  <!-- QUOTE -->
   <div class="quote-section">
     <div class="quote-inner">
       <blockquote>"The 2026 USMCA review will not stop nearshoring. It will separate prepared manufacturers from reactive ones."</blockquote>
@@ -939,10 +893,10 @@
   </div>
 
   <!-- WHY NEARSHORE -->
-  <section>
+  <section class="why-section">
     <div class="section-inner">
       <div class="section-label">Strategic Advantage</div>
-      <h2 class="section-title">Why source actuators<br>from Mexico?</h2>
+      <h2 class="section-title">Why source actuators from Mexico?</h2>
       <p class="section-desc">
         Mexico is the #1 US trading partner. $800B+ in bilateral trade.
         Same-timezone logistics. USMCA duty-free access.
@@ -952,19 +906,17 @@
         <div class="why-card">
           <div class="why-number">01</div>
           <h3 class="why-title">USMCA Duty-Free Access</h3>
-          <p class="why-text">Actuators meeting 75% regional value content ship duty-free across North America. Section 301 tariffs make Chinese alternatives 25-100% more expensive. The math is simple.</p>
+          <p class="why-text">Actuators meeting 75% regional value content ship duty-free across North America. Section 301 tariffs make Chinese alternatives 25-100% more expensive.</p>
         </div>
-
         <div class="why-card">
           <div class="why-number">02</div>
           <h3 class="why-title">Same-Day Logistics</h3>
-          <p class="why-text">Monterrey to Houston: 8 hours by truck. Queretaro to Dallas: same-day air freight. No ocean transit, no container delays, no port congestion. Your supply chain gets weeks back.</p>
+          <p class="why-text">Monterrey to Houston: 8 hours by truck. Queretaro to Dallas: same-day air freight. No ocean transit, no container delays, no port congestion.</p>
         </div>
-
         <div class="why-card">
           <div class="why-number">03</div>
           <h3 class="why-title">Manufacturing Clusters</h3>
-          <p class="why-text">Nuevo Leon, Guanajuato, and Queretaro have vacancy rates under 2%. Automotive, aerospace, and electronics OEMs have built deep supplier ecosystems. Your actuator supply chain already exists.</p>
+          <p class="why-text">Nuevo Leon, Guanajuato, and Queretaro have vacancy rates under 2%. Automotive, aerospace, and electronics OEMs have built deep supplier ecosystems.</p>
         </div>
       </div>
     </div>
@@ -974,35 +926,35 @@
   <section class="usmca-section">
     <div class="section-inner">
       <div class="section-label">Compliance</div>
-      <h2 class="section-title">USMCA 2026 Review:<br>Act before July</h2>
+      <h2 class="section-title">USMCA 2026 Review: Act before July</h2>
       <p class="section-desc">
-        The formal USMCA review begins July 2026. Regional value thresholds
+        The formal review begins July 2026. Regional value thresholds
         may increase. Start qualifying North American actuator sources now.
       </p>
 
-      <div class="usmca-grid">
+      <div class="usmca-layout">
         <ul class="usmca-points">
           <li>
-            <span class="check">&#10003;</span>
+            <span class="usmca-check">&#10003;</span>
             <span class="point-text"><strong>75% regional value content</strong> required for automotive actuators to qualify for duty-free treatment under current USMCA rules.</span>
           </li>
           <li>
-            <span class="check">&#10003;</span>
+            <span class="usmca-check">&#10003;</span>
             <span class="point-text"><strong>Higher thresholds expected</strong> for steel, aluminum, and automotive components after the July 2026 review.</span>
           </li>
           <li>
-            <span class="check">&#10003;</span>
+            <span class="usmca-check">&#10003;</span>
             <span class="point-text"><strong>Rules of origin documentation</strong> is mandatory. We help you identify suppliers with verified North American manufacturing footprints.</span>
           </li>
           <li>
-            <span class="check">&#10003;</span>
+            <span class="usmca-check">&#10003;</span>
             <span class="point-text"><strong>De minimis thresholds</strong> allow up to 7% non-originating content for most actuator classifications under HS 8412 and HS 8501.</span>
           </li>
         </ul>
 
         <div class="usmca-cta-box">
-          <h3>Get your actuator sourcing report</h3>
-          <p>Tell us your actuator requirements. We'll match you with verified North American manufacturers from our index of 1.15M+ suppliers. Response within 24 hours.</p>
+          <h3>Get your sourcing report</h3>
+          <p>Tell us your actuator requirements. We match you with verified North American manufacturers from our index of 1.15M+ suppliers. Response within 24 hours.</p>
           <a href="#contact" class="btn-primary">Request Report</a>
         </div>
       </div>
@@ -1023,24 +975,11 @@
         <div class="form-info">
           <h3>What you get</h3>
           <p>A curated list of actuator manufacturers matching your exact specifications, with verified capabilities, certifications, and production capacity.</p>
-
           <div class="form-details">
-            <div class="form-detail">
-              <div class="form-detail-icon">&#9670;</div>
-              <span class="form-detail-text">Matched suppliers from 1.15M+ indexed manufacturers</span>
-            </div>
-            <div class="form-detail">
-              <div class="form-detail-icon">&#9670;</div>
-              <span class="form-detail-text">NAICS, capability, and certification filtering</span>
-            </div>
-            <div class="form-detail">
-              <div class="form-detail-icon">&#9670;</div>
-              <span class="form-detail-text">USMCA compliance verification</span>
-            </div>
-            <div class="form-detail">
-              <div class="form-detail-icon">&#9670;</div>
-              <span class="form-detail-text">Response within 24 hours, direct from our team</span>
-            </div>
+            <div class="form-detail">Matched suppliers from 1.15M+ indexed manufacturers</div>
+            <div class="form-detail">NAICS, capability, and certification filtering</div>
+            <div class="form-detail">USMCA compliance verification</div>
+            <div class="form-detail">Response within 24 hours, direct from our team</div>
           </div>
         </div>
 
@@ -1057,7 +996,6 @@
                 <input type="email" name="email" class="form-input" placeholder="you@company.com" required>
               </div>
             </div>
-
             <div class="form-row">
               <div class="form-group">
                 <label>Company <span class="req">*</span></label>
@@ -1078,19 +1016,12 @@
                 </select>
               </div>
             </div>
-
             <div class="form-group">
               <label>Requirements <span class="req">*</span></label>
               <textarea name="message" class="form-input" placeholder="Describe your actuator requirements: type, specifications, volume, application, timeline..." required maxlength="2000"></textarea>
             </div>
-
-            <button type="submit" class="form-submit" id="submit-btn">
-              Request Supplier List
-            </button>
-
-            <p class="form-note">
-              Powered by <a href="https://bomforge.com" target="_blank">BOMForge</a> supplier intelligence. No spam. Direct response within 24 hours.
-            </p>
+            <button type="submit" class="form-submit" id="submit-btn">Request Supplier List</button>
+            <p class="form-note">Powered by <a href="https://bomforge.com" target="_blank">BOMForge</a> supplier intelligence. No spam. Direct response within 24 hours.</p>
           </form>
         </div>
       </div>
@@ -1098,7 +1029,7 @@
   </section>
 
   <!-- FAQ -->
-  <section>
+  <section class="faq-section">
     <div class="section-inner">
       <div class="section-label">FAQ</div>
       <h2 class="section-title">Common questions</h2>
@@ -1106,7 +1037,7 @@
       <div class="faq-list">
         <div class="faq-item">
           <h3 class="faq-q">What types of actuators are manufactured in Mexico?</h3>
-          <p class="faq-a">Mexico manufactures linear actuators, hydraulic actuators, pneumatic actuators, electric actuators, rotary actuators, and valve actuators. Major manufacturing clusters exist in Nuevo Leon, Queretaro, and Guanajuato, with deep supply chains built around automotive, aerospace, and electronics OEMs.</p>
+          <p class="faq-a">Mexico manufactures linear, hydraulic, pneumatic, electric, rotary, and valve actuators. Major manufacturing clusters exist in Nuevo Leon, Queretaro, and Guanajuato, with deep supply chains built around automotive, aerospace, and electronics OEMs.</p>
         </div>
         <div class="faq-item">
           <h3 class="faq-q">Are Mexican actuators USMCA compliant?</h3>
@@ -1114,15 +1045,15 @@
         </div>
         <div class="faq-item">
           <h3 class="faq-q">How do I find actuator suppliers in North America?</h3>
-          <p class="faq-a">Use the Mexican Actuators supplier discovery platform, powered by BOMForge's database of over 1.15 million North American manufacturers. Submit your requirements above and receive a curated supplier shortlist within 24 hours, filtered by actuator type, capability, certification, and location.</p>
+          <p class="faq-a">Submit your requirements above and receive a curated supplier shortlist within 24 hours, filtered by actuator type, capability, certification, and location. Powered by BOMForge's database of over 1.15 million North American manufacturers.</p>
         </div>
         <div class="faq-item">
           <h3 class="faq-q">What is the cost advantage of nearshoring actuators from Mexico?</h3>
-          <p class="faq-a">Mexican actuator manufacturers typically offer 30-40% cost savings versus Asian suppliers when you factor in total landed cost: tariffs (Section 301 adds 25-100% on Chinese imports), shipping time (days vs. weeks), inventory carrying costs, and USMCA duty-free qualification. Same-timezone communication and IP protection add further value.</p>
+          <p class="faq-a">30-40% savings versus Asian suppliers on total landed cost: tariffs (Section 301 adds 25-100% on Chinese imports), shipping time (days vs. weeks), inventory carrying costs, and USMCA duty-free qualification. Same-timezone communication and IP protection add further value.</p>
         </div>
         <div class="faq-item">
           <h3 class="faq-q">What certifications do Mexican actuator manufacturers hold?</h3>
-          <p class="faq-a">Leading Mexican actuator manufacturers hold ISO 9001, ISO 14001, IATF 16949 (automotive), AS9100 (aerospace), and UL/CSA electrical safety certifications. Our platform verifies certifications directly and flags any gaps in your supplier shortlist.</p>
+          <p class="faq-a">ISO 9001, ISO 14001, IATF 16949 (automotive), AS9100 (aerospace), and UL/CSA electrical safety certifications. Our platform verifies certifications directly and flags any gaps in your supplier shortlist.</p>
         </div>
       </div>
     </div>
@@ -1131,10 +1062,14 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand">Mexican Actuators</div>
-      <div class="footer-powered">Supplier intelligence by <a href="https://bomforge.com">BOMForge, Inc.</a></div>
-      <div class="footer-legal">&copy; 2026 BOMForge, Inc. All rights reserved. Los Angeles, CA.</div>
-      <p class="footer-nasa">Actuator and manufacturing imagery: NASA/Goddard, NASA/KSC (public domain). Not affiliated with the U.S. or Mexican governments.</p>
+      <div class="footer-left">
+        <span class="footer-brand">Mexican Actuators</span>
+        <span class="footer-powered">Supplier intelligence by <a href="https://bomforge.com">BOMForge, Inc.</a></span>
+      </div>
+      <div class="footer-right">
+        &copy; 2026 BOMForge, Inc. Los Angeles, CA.<br>
+        Actuator imagery: NASA/Goddard, NASA/KSC (public domain). Not affiliated with the U.S. or Mexican governments.
+      </div>
     </div>
   </footer>
 
